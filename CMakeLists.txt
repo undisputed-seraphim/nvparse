@@ -39,3 +39,8 @@ target_include_directories(nvparse_lexer_parser PUBLIC ${CMAKE_BINARY_DIR}/bison
 add_library(nvparse STATIC ${src})
 target_include_directories(nvparse PUBLIC ${inc_dir})
 target_link_libraries(nvparse PUBLIC GLUT::GLUT GLEW::glew OpenGL::OpenGL nvparse_lexer_parser_src)
+
+include(GNUInstallDirs)
+
+install(TARGETS nvparse EXPORT nvparse-targets)
+install(FILES "${CMAKE_SOURCE_DIR}/include/nvparse.h" DESTINATION CMAKE_INSTALL_INCLUDEDIR)
