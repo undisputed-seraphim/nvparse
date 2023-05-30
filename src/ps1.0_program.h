@@ -1,14 +1,7 @@
 #ifndef _PS10_PROGRAM_H
 #define _PS10_PROGRAM_H
 
-#include "nvparse_errors.h"
-#include "nvparse_externs.h"
-
-#ifdef WIN32
-#  include <windows.h>
-#endif
-
-#include <GL/gl.h>
+#include <GL/glew.h>
 #include <string>
 #include <list>
 #include <vector>

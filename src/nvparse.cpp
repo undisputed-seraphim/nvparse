@@ -6,8 +6,8 @@
 #endif
 
 #include <cstdio>
+#include <cstring>
 #include <string>
-#include <GL/glu.h>
 
 #include "nvparse_extensions.h"
 #include "nvparse_errors.h"

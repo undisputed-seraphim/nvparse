@@ -1,5 +1,6 @@
 #include "vs1.0_inst.h"
 #include <stdio.h>
+#include <string.h>
 #include <string>
 #include "nvparse_errors.h"
 #include "nvparse_externs.h"

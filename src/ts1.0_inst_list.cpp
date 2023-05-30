@@ -1,6 +1,7 @@
 #include "ts1.0_inst_list.h"
 #include <malloc.h>
 #include <stdio.h>
+#include <string.h>
 #include <GL/glew.h>
 #ifdef WIN32
 #include <windows.h>

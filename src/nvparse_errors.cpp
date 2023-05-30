@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstring>
 #include <string>
 
 #include "nvparse_errors.h"

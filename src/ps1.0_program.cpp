@@ -10,6 +10,7 @@
 #include <map>
 #include <algorithm>
 #include <string.h>
+#include <string>
 #include <set>
 
 //void checkState(const char *msg);

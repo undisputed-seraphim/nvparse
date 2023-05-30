@@ -4,6 +4,8 @@
 #include "nvparse_errors.h"
 #include "nvparse_externs.h"
 
+#include <cstring>
+
 void CombinersStruct::Validate()
 {
 	if (2 == numConsts &&
