@@ -8,7 +8,7 @@ alphanum [0-9a-zA-Z_]
 #include <stdlib.h>
 #include <malloc.h>
 #include "rc1.0_combiners.h"
-#include "_rc1.0_parser.h"
+#include "_rc1.0_parser.hpp"
 
 #include <GL/glew.h>
 

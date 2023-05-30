@@ -29,14 +29,14 @@
 #include "macro.h"
 #include "nvparse_errors.h"
 #include "vs1.0_inst_list.h"
-#include "_vs1.0_parser.h"
+#include "_vs1.0_parser.hpp"
 #define yylineno line_number
 #include "nvparse_externs.h"
 
 #define yylineno line_number
 int line_incr;
-void LexError(char *format, ...);
-void LexWarning(char *format, ...);
+void LexError(const char *format, ...);
+void LexWarning(const char *format, ...);
 char *ReadTextFile(const char * filename);
 
 unsigned int MakeRegisterMask(char *findName);
@@ -100,7 +100,7 @@ typedef struct INCLUDEINFO
 	char	*fileName;
 	unsigned int lineNo;
 	YY_BUFFER_STATE buffer;
-	MACROENTRY *lastInvokeMacro;				// save off in case nested macros.
+	MACROENTRY *lastInvokeMacro;			// save off in case nested macros.
 	MACROENTRY *lastParseMacro;				// recursive macros
 	MACROTEXT *lastMacroLineParse;			// save off for recursive lines of macros working on.
 	bool lastbInsideMacro;					// save off for recursive macros
@@ -139,10 +139,10 @@ MACROENTRY *FindNMacro(char *macroName, unsigned int sLen);
 
 MACROFUNCTIONPTR gMacroCallFunction;
 
-char *builtInMacros =	"macro m3x2 reg1, reg2, reg3\n"
-						"	dp3	%reg1.x, %reg2, %reg3\n"
-						"	dp3 %reg1.y, %reg2, %inc(%reg3)\n"
-						"endm";
+const char *builtInMacros =	"macro m3x2 reg1, reg2, reg3\n"
+						    "	dp3	%reg1.x, %reg2, %reg3\n"
+						    "	dp3 %reg1.y, %reg2, %inc(%reg3)\n"
+						    "endm";
 
 //
 // local prototypes
@@ -178,7 +178,7 @@ char gMacroLine[MAXSAVELINE+1];
 
 bool gbInsideMacro = false;		// flag if we are doing a macro replace or not.
 bool gbTempInsideMacro = false;
-unsigned int gInvokeState = INITIAL;
+unsigned int gInvokeState = 1;
 
 
 MACROENTRY *gParseMacro;		// which source macro entry we are using
@@ -193,7 +193,7 @@ typedef enum OPCODETYPE
 };
 typedef struct OPCODEMAP
 {
-	char *string;				// string for opcode
+	const char *string;			// string for opcode
 	int tokenName;              // name of the corresponding token
 	int numArguments;			// number of arguments for opcode
 	float version;				// minimum version supported in.
@@ -2782,7 +2782,7 @@ unsigned int MakeRegisterMask(char *findName)
 // Parameters:	typical printf like format
 // Returns:		.
 //=====================================================================
-void LexError(char *format, ...)
+void LexError(const char *format, ...)
 {
 	char errstring[4096];
 	va_list marker;
@@ -2811,7 +2811,7 @@ void LexError(char *format, ...)
 // Parameters:	typical printf like format
 // Returns:		.
 //=====================================================================
-void LexWarning(char *format, ...)
+void LexWarning(const char *format, ...)
 {
 	char errstring[4096];
 	va_list marker;
